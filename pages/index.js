@@ -1,4 +1,7 @@
+import { ChevronLeftIcon } from "@heroicons/react/solid";
 import ProductCard from "../components/ProductCard"
+import Header from '../components/Header';
+import HeaderNav from "../components/HeaderNav";
 
 let products = [
   {
@@ -13,7 +16,8 @@ let products = [
     ram: "8 GB, 1 x 8 GB, DDR4",
     disk: "2.5 inch 500GB 7200 RPM Hard Disk Drive, 128 MB cache",
     windows: "Windows 11 Home Single Language (Dell Technologies recommends Windows 11 Pro for business)",
-    description: "Essential commercial micro form factor desktop that delivers best-in-class security and performance. Built secure with TPM 2.0, standard security lock slot, padlock loop, intrusion switch, and SED hard drive."
+    description: "Essential commercial micro form factor desktop that delivers best-in-class security and performance. Built secure with TPM 2.0, standard security lock slot, padlock loop, intrusion switch, and SED hard drive.",
+    orderCode: "kjhdsfiosdhfoidfi"
   },
   {
     id: 2,
@@ -99,8 +103,15 @@ let products = [
 
 
 export default function Home() {
+  let previousPage = "Shop Laptop Computers & 2-in-1 PCs"
   return (
     <div className="h-screen w-full overflow-hidden overflow-y-scroll">
+      <Header />
+      <HeaderNav />
+      <div className="flex m-3 items-center space-x-2 text-xs text-blue-500">
+        <ChevronLeftIcon className="w-4 h-4" />
+        <div>{previousPage}</div>
+      </div>
       <div className="p-5 flex flex-wrap space-x-3">
         {products.map((item) => (
           <ProductCard key={item.id} product={item} />

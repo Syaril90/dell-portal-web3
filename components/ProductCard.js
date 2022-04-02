@@ -1,14 +1,14 @@
 import { ChipIcon, DatabaseIcon, DesktopComputerIcon, ServerIcon, StarIcon, CurrencyDollarIcon } from "@heroicons/react/solid";
 import IconText from "./IconText";
 
-function ProductCard({ product: { name, imagePath, ratingStar, ratingNumber, normalPrice, actualPrice, cpu, ram, disk, windows, description } }) {
+function ProductCard({ product: { name, imagePath, ratingStar, ratingNumber, normalPrice, actualPrice, cpu, ram, disk, windows, description, orderCode } }) {
     return (
-        <div className="flex flex-col p-3 w-1/5 shadow-md">
+        <div className="flex flex-col m-3 p-3 w-64 shadow-md">
             <div className="flex justify-center">
                 <img className="align-middle w-32" src={imagePath} alt="" />
             </div>
 
-            <div className="pt-3 text-l text-blue-500">{name}</div>
+            <div className="text-l text-blue-500">{name}</div>
             {/* rating */}
             <div className="flex items-center">
                 <StarIcon className="pr-2 w-7 h-7 text-yellow-400" />
@@ -41,7 +41,9 @@ function ProductCard({ product: { name, imagePath, ratingStar, ratingNumber, nor
                 <div className=""><CurrencyDollarIcon className="h-5 w-5" /></div>
                 <div className="text-sm">Up to RM 135.00 back <span className="text-blue-500">in rewards</span></div>
             </div>
-            <div className="text-xs text-gray-500">Order Code hnx93056100sppmy</div>
+            <button className="p-2 bg-blue-700 text-white rounded-md">BUY</button>
+            {orderCode && <div className="mt-2 text-xs text-gray-500">Order Code {orderCode}</div>}
+
         </div >
 
     )

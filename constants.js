@@ -1,0 +1,1 @@
+export var dellLogo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSmFZKviCjpOoIoSutM_Kyl6p_XskRVNlmcg&usqp=CAU";
