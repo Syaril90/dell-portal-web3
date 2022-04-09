@@ -9,7 +9,6 @@ function ProductCard({ product: { name, imagePath, ratingStar, ratingNumber, nor
             </div>
 
             <div className="text-l text-blue-500">{name}</div>
-            {/* rating */}
             <div className="flex items-center">
                 <StarIcon className="pr-2 w-7 h-7 text-yellow-400" />
                 <div className="">{ratingStar}</div>
@@ -30,7 +29,6 @@ function ProductCard({ product: { name, imagePath, ratingStar, ratingNumber, nor
                 <IconText Icon={DatabaseIcon} Text={disk} />
                 <IconText Icon={DesktopComputerIcon} Text={windows} />
             </div>
-            {/* color       */}
             <div className="flex py-3 items-center space-x-3">
                 <div className="text-xs">Colors:</div>
                 <div className="bg-gray-600 h-5 w-5 rounded-full"></div>
