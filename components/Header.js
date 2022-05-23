@@ -1,9 +1,11 @@
 import { ShoppingCartIcon, UserIcon, MenuIcon, LogoutIcon } from "@heroicons/react/outline";
 import { dellLogo } from "../constants";
-import { useMoralis } from 'react-moralis';
+import { useRecoilValue } from "recoil";
+import { userAtom } from "../recoil/atoms/userAtom";
 
 function Header() {
-    const { logout, user } = useMoralis();
+    const user = useRecoilValue(userAtom);
+    // const { logout, user } = useMoralis();
     return (
         <header>
             <div className="flex m-1 justify-between items-center text-gray-600">
@@ -19,11 +21,11 @@ function Header() {
                 <div className="flex space-x">
                     <div className="hidden xl:flex p-2 flex-col border border-gray-500 rounded-lg">
                         <div className="">username:</div>
-                        <div className="text-black text-xs">{user.getUsername()}</div>
+                        <div className="text-black text-xs">{user?.walletAddr}</div>
                     </div>
 
                     <ShoppingCartIcon className="w-14 h-14 p-3 hover:border-b-2 hover:border-gray-700" />
-                    <LogoutIcon onClick={logout} className="w-14 h-14 p-3 hover:border-b-2 hover:border-gray-700" />
+                    {/* <LogoutIcon onClick={logout} className="w-14 h-14 p-3 hover:border-b-2 hover:border-gray-700" /> */}
                 </div>
             </div>
         </header>

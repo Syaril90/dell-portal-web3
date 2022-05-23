@@ -4,18 +4,21 @@ import ProductCard from "../components/ProductCard"
 import Header from '../components/Header';
 import HeaderNav from "../components/HeaderNav";
 import Login from "../components/Login";
-import { useState } from "react";
-import { useMoralis } from "react-moralis";
+import { useEffect } from "react";
+import { supabase } from '../utils/supabaseClient'
+import { authAtom } from "../recoil/atoms/AuthAtom";
+import { useRecoilValue } from "recoil";
+
 
 
 export default function Home({ productsData }) {
 
   const previousPage = "Shop Laptop Computers & 2-in-1 PCs"
-  const { isAuthenticated } = useMoralis();
-  console.log("ini", isAuthenticated);
-
+  const isAuthenticate = useRecoilValue(authAtom);
+  
+  
   return (
-    isAuthenticated ?
+    isAuthenticate ?
       (<div className="h-screen w-full overflow-hidden overflow-y-scroll">
         <Header />
         <HeaderNav />

@@ -1,15 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
 import  { ethers} from 'ethers'
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_KEY
-);
+import { supabase } from '../utils/supabaseClient'
+import { authAtom } from '../recoil/atoms/AuthAtom'
+import { userAtom } from '../recoil/atoms/userAtom'
+import { useRecoilState } from "recoil";
 
 export default function Home(){
     const [loginState, setLoginState] = useState();
+    const [auth, setAuth] = useRecoilState(authAtom);
+    const [user, setUser] = useRecoilState(userAtom);
 
     const checkUser = async () => {
         const { data } = await supabase.from("user").select("*")
@@ -59,10 +59,11 @@ export default function Home(){
         setLoginState("Login completed");
 
         const { user, token } = await response.json();
-        console.log(`user`, user)
-        console.log(`token`, token)
+        console.log(`user`, user);
+        console.log(`token`, token);
         supabase.auth.setAuth(token);
-
+        setAuth(true);
+        setUser(user);
     }
 
     return (
@@ -72,7 +73,7 @@ export default function Home(){
                 <img className='w-10' src="https://logowik.com/content/uploads/images/t_metamask-fox6185.jpg" alt="" />
                 <button onClick={login} className="">Login with MetaMask</button>
             </div>
-            {/* <div className="mt-4 flex items-center space-x-3 p-3 pr-5 border border-blue-700 rounded-lg"><button onClick={checkUser} className="">Check user</button></div> */}
+            <div className="mt-4 flex items-center space-x-3 p-3 pr-5 border border-blue-700 rounded-lg"><button onClick={checkUser} className="">Check user</button></div>
         </div>
         
     )
